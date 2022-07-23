@@ -2,6 +2,8 @@ name: sample docfx-build
 
 on:
   workflow_dispatch:
+  push:
+    branches: fix-docfx-sample
 
 jobs:
   build-linux:
