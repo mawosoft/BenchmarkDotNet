@@ -1,19 +1,9 @@
-name: build
+name: sample docfx-build
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
-  build-windows:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run
-      shell: cmd
-      run: |
-        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-        ./build.bat
   build-linux:
     runs-on: ubuntu-latest
     steps:
@@ -25,11 +15,15 @@ jobs:
         platform: x64
     - name: Set up zlib-static
       run: sudo apt-get install -y libkrb5-dev
-    - name: Run
-      run: ./build.sh
-  build-macos:
-    runs-on: macOS-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run
-      run: ./build.sh
+    - name: Build
+      # Doing a full build here for simplicity. This can be limited to the core projects.
+      # However, as noted in the PR, building them before building the docs is neccessary.
+      run: ./build.sh --target Build
+    - name: Build docs
+      run: dotnet run --project ./build/Build.csproj --no-build -- --target DocFx_Build
+    - name: Publish to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_site
+        #force_orphan: true    

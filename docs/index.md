@@ -1,3 +1,12 @@
+## Demonstrating DocFx configuration improvements for BDN API documentation via [PR dotnet#2050](https://github.com/dotnet/BenchmarkDotNet/pull/2050)
+
+Absolute links to `benchmarkdotnet.org` have been made relative on this page only. You may still encounter them on sub pages. If you want to compare this version of the docs with the original one, keep an eye on the address bar.
+
+- This demo version is at https://mawosoft.github.io/BenchmarkDotNet/
+- The original is at https://benchmarkdotnet.org/
+
+***
+
 <h3 align="center">
 
   ![](logo/logo-wide.png)
@@ -18,9 +27,9 @@
 <h3 align="center">
   <a href="#features">Features</a>
   <span> · </span>
-  <a href="https://benchmarkdotnet.org/articles/guides/getting-started.html">Getting started</a>
+  <a href="/articles/guides/getting-started.html">Getting started</a>
   <span> · </span>
-  <a href="https://benchmarkdotnet.org/articles/overview.html">Documentation</a>
+  <a href="/articles/overview.html">Documentation</a>
   <span> · </span>
   <a href="#learn-more-about-benchmarking">Learn more about benchmarking</a>
 </h3>
@@ -33,7 +42,7 @@ The results are presented in a [user-friendly](#friendliness) form that highligh
 The library is adopted by [6800+ projects](#who-uses-benchmarkdotnet) including .NET Runtime and supported by the [.NET Foundation](https://dotnetfoundation.org).
 
 It's [easy](#simplicity) to start writing benchmarks, check out an example
-  (copy-pastable version is [here](https://benchmarkdotnet.org/articles/guides/getting-started.html)):
+  (copy-pastable version is [here](/articles/guides/getting-started.html)):
 
 ```cs
 [SimpleJob(RuntimeMoniker.Net472, baseline: true)]
@@ -124,13 +133,13 @@ Four aspects define the design of these features:
 You shouldn't be an experienced performance engineer if you want to write benchmarks.
 You can design very complicated performance experiments in the declarative style using simple APIs.
 
-For example, if you want to [parameterize](https://benchmarkdotnet.org/articles/features/parameterization.html) your benchmark,
+For example, if you want to [parameterize](/articles/features/parameterization.html) your benchmark,
   mark a field or a property with `[Params(1, 2, 3)]`: BenchmarkDotNet will enumerate all of the specified values
   and run benchmarks for each case.
 If you want to compare benchmarks with each other,
-  mark one of the benchmark as the [baseline](https://benchmarkdotnet.org/articles/features/baselines.html)
+  mark one of the benchmark as the [baseline](/articles/features/baselines.html)
   via `[Benchmark(baseline: true)]`: BenchmarkDotNet will compare it with all of the other benchmarks.
-If you want to compare performance in different environments, use [jobs](https://benchmarkdotnet.org/articles/configs/jobs.html).
+If you want to compare performance in different environments, use [jobs](/articles/configs/jobs.html).
 For example, you can run all the benchmarks on .NET Core 3.0 and Mono via
   `[SimpleJob(RuntimeMoniker.NetCoreApp30)]` and `[SimpleJob(RuntimeMoniker.Mono)]`.
 
@@ -151,7 +160,7 @@ ManualConfig.CreateEmpty() // A configuration for our benchmarks
 ```
 
 If you prefer command-line experience, you can configure your benchmarks via
-  the [console arguments](https://benchmarkdotnet.org/articles/guides/console-args.html)
+  the [console arguments](/articles/guides/console-args.html)
   in any console application (other types of applications are not supported).
 
 ### Automation
@@ -174,13 +183,13 @@ If you write this code from scratch, it's easy to make a mistake and spoil your 
 Note that it's a shortened version of the full checklist that you should follow during benchmarking:
   there are a lot of additional hidden pitfalls that should be handled appropriately.
 Fortunately, you shouldn't worry about it because
-  BenchmarkDotNet [will do](https://benchmarkdotnet.org/articles/guides/how-it-works.html) this boring and time-consuming stuff for you.
+  BenchmarkDotNet [will do](/articles/guides/how-it-works.html) this boring and time-consuming stuff for you.
 
 Moreover, the library can help you with some advanced tasks that you may want to perform during the investigation.
 For example,
-  BenchmarkDotNet can measure the [managed](https://benchmarkdotnet.org/articles/configs/diagnosers.html#usage) and
-  [native](https://benchmarkdotnet.org/articles/samples/IntroNativeMemory.html) memory traffic
-  and print [disassembly listings](https://benchmarkdotnet.org/articles/configs/diagnosers.html#sample-introdisassembly) for your benchmarks.
+  BenchmarkDotNet can measure the [managed](/articles/configs/diagnosers.html#usage) and
+  [native](/articles/samples/IntroNativeMemory.html) memory traffic
+  and print [disassembly listings](/articles/configs/diagnosers.html#sample-introdisassembly) for your benchmarks.
 
 ### Reliability
 
@@ -210,9 +219,9 @@ BenchmarkDotNet performs the main part of this analysis for you and presents res
 
 After the experiments, you get a summary table that contains a lot of useful data about the executed benchmarks.
 By default, it includes only the most important columns,
-  but they can be [easily customized](https://benchmarkdotnet.org/articles/configs/columns.html).
+  but they can be [easily customized](/articles/configs/columns.html).
 The column set is adaptive and depends on the benchmark definition and measured values.
-For example, if you mark one of the benchmarks as a [baseline](https://benchmarkdotnet.org/articles/features/baselines.html),
+For example, if you mark one of the benchmarks as a [baseline](/articles/features/baselines.html),
   you will get additional columns that will help you to compare all the benchmarks with the baseline.
 By default, it always shows the Mean column,
   but if we detected a vast difference between the Mean and the Median values,
@@ -307,7 +316,7 @@ Any help will be appreciated.
 You can develop new features, fix bugs, improve the documentation, or do some other cool stuff.
 
 If you want to contribute, check out the
-  [Contributing guide](https://benchmarkdotnet.org/articles/contributing/building.html) and
+  [Contributing guide](/articles/contributing/building.html) and
   [up-for-grabs](https://github.com/dotnet/BenchmarkDotNet/issues?q=is:open+is:issue+label:up-for-grabs) issues.
 If you have new ideas or want to complain about bugs, feel free to [create a new issue](https://github.com/dotnet/BenchmarkDotNet/issues/new).
 Let's build the best tool for benchmarking together!
